@@ -158,7 +158,7 @@
                 else if (choice == "bill payment")
                 {
                     Console.WriteLine("What is the bill you are trying to pay for today?");
-                    
+                    bill = Console.ReadLine();
                     Console.WriteLine();
                     Console.WriteLine("");
                     Console.ReadLine();
