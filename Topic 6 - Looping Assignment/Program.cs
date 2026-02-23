@@ -14,8 +14,9 @@
                 Console.WriteLine();
                 Console.WriteLine("1 - Prompter");
                 Console.WriteLine("2 - Simple Banking Machine");
+                Console.WriteLine("3 - Doubles Roller");
                 Console.WriteLine("...");
-                Console.WriteLine("3 - Exit");
+                Console.WriteLine("4 - Exit");
                 Console.WriteLine();
                 choice = Console.ReadLine().ToLower().Trim();
                 Console.Clear();
@@ -30,6 +31,10 @@
                     simpleBankingMachine();
                 }
                 else if (choice == "3")
+                {
+                    doublesRoller();
+                }
+                else if (choice == "4")
                 {
                     done = true;
                     Console.WriteLine("Thanks for trying out my Program!");
@@ -187,6 +192,36 @@
             Console.ReadLine();
         }
 
+        public static void doublesRoller()
+        {
+            Die die1;
+            Die die2;
+            int rollCount = 0;
+
+            die1 = new Die(ConsoleColor.Red);
+            die2 = new Die(ConsoleColor.Red);
+
+            do
+            {
+                int roll1 = die1.Roll;
+                int roll2 = die2.Roll;
+                rollCount++;
+
+                die1.DrawRoll();
+                die2.DrawRoll();
+
+                Console.WriteLine("Looks like you didn't roll doubles, press Enter to roll again");
+                Console.ReadLine();
+
+            } while (die1 != die2);
+            {
+                Console.WriteLine($"You rolled doubles! It only took you {rollCount} rolls.");
+
+            }
+
+            Console.ReadLine();
+
+        }
     }
 }
 
