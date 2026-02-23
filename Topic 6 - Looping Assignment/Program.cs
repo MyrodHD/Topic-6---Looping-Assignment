@@ -36,8 +36,8 @@
                 }
                 else if (choice == "4")
                 {
-                    done = true;
-                    Console.WriteLine("Thanks for trying out my Program!");
+                    Console.WriteLine("Thank you for trying my program");
+                    Console.ReadLine();
                 }
                 else
                 {
@@ -197,31 +197,42 @@
             Die die1;
             Die die2;
             int rollCount = 0;
+            bool doubleRoll = false;
 
             die1 = new Die(ConsoleColor.Red);
             die2 = new Die(ConsoleColor.Red);
 
-            do
+            while (!doubleRoll)
             {
-                int roll1 = die1.Roll;
-                int roll2 = die2.Roll;
-                rollCount++;
 
                 die1.DrawRoll();
                 die2.DrawRoll();
+                rollCount++;
 
-                Console.WriteLine("Looks like you didn't roll doubles, press Enter to roll again");
-                Console.ReadLine();
+                if (die1.Roll == die2.Roll)
+                {
+                    Console.WriteLine($"You rolled doubles, it only took you {rollCount} tries");
 
-            } while (die1 != die2);
-            {
-                Console.WriteLine($"You rolled doubles! It only took you {rollCount} rolls.");
+                    doubleRoll = true;
+                }
+                else if (die1.Roll != die2.Roll)
+                {
+                    die1.RollDie();
+                    die2.RollDie();
 
+                    Console.WriteLine("You didn't roll doubles, press Enter to roll again");
+                    Console.ReadLine();
+                    Console.Clear();
+                }
             }
 
+            Console.WriteLine("----------------");
+            Console.WriteLine("Press Enter to continue");
             Console.ReadLine();
+            Console.Clear();
 
         }
+
     }
 }
 
